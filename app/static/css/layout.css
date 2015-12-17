@@ -1,0 +1,119 @@
+body {
+  width: 100%;
+  height: 1080px;
+  background-color: #ffffff;
+}
+#topbar{
+    position: fixed;
+     width: 100%;
+     top: 0px;
+     height: 50px;
+     z-index: 99;
+     border-bottom-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff;
+     background-color: #f2f2f2;
+}
+#topbarlogo{
+    position: absolute;
+     width: 150px;
+
+     margin-left: 100px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+#topbarmenu1{
+     position: absolute;
+     width: 150px;
+     margin-top: 10px;
+     margin-left: 300px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+
+#topbarmenu2{
+     position: absolute;
+     width: 150px;
+     margin-top: 10px;
+     margin-left: 450px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+
+#topbarmenu3{
+     position: absolute;
+     width: 150px;
+     margin-top: 10px;
+    margin-left: 600px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+#topbarsignup{
+     position: absolute;
+     width: 100px;
+     margin-top: 10px;
+    margin-left: 910px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+#topbarregister{
+     position: absolute;
+     width: 100px;
+     margin-top: 10px;
+    margin-left: 1000px;
+     height: 35px;
+     background-color: #f2f2f2;
+}
+#mainlayer{
+
+    width:100%;
+    height: 100%;
+
+     background-color: #ffffff;
+
+
+
+
+}
+#bottombar{
+    position: absolute;
+     width: 100%;
+     bottom: 1px;
+     height: 250px;
+     border-top-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff;
+}
+#bottombarlogo{
+     position: absolute;
+     width: 400px;
+     bottom: 1px;
+    top: 25px;
+    left: 25px;
+     height: 245px;
+
+     background-color: #ffffff;
+}
+#bottombarcontent{
+     position: absolute;
+     width: 250px;
+     bottom: 1px;
+     height: 245px;
+    margin-left: 400px;
+     background-color: #ffffff;
+}
+
+#bottombarcontent2{
+     position: absolute;
+     width: 250px;
+     bottom: 1px;
+     height: 245px;
+    margin-left: 650px;
+     background-color: #ffffff;
+}
+
+
+
+

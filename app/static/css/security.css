@@ -1,0 +1,11 @@
+#security{
+     position: absolute;
+     width: 500px;
+     top: 100px;
+     left: 650px;
+     height: 1000px;
+     border-bottom-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff;
+}

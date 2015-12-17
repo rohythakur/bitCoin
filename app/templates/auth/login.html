@@ -1,0 +1,33 @@
+{% extends "plain.html" %}
+{% from "/auth/_formhelpers.html" import render_field %}
+
+
+
+{% block content %}
+
+<div id="loginwindow">
+
+    <img src="{{ url_for('static', filename='/images/bclogo2.png') }}" width="50" height="50">
+<form method="post" action="/auth/login">
+  <dl>
+    {{ render_field(form.username, placeholder="username", autocomplete="off") }}
+    {{ render_field(form.password, placeholder="password", autocomplete="off") }}
+
+  </dl>
+
+
+
+
+            <a href="{{ url_for('auth.register') }}" class="btn btn-info" role="button">Register</a>
+
+            <input class="btn btn-danger" type="submit" value=login>
+</form>
+
+
+    <br>
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+ok
+
+{% from "/auth/_formhelpers.html" import render_field %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/security.css') }}">
+<div id="security">
+
+    <h1>Change Password</h1>
+
+
+        <form method="post"  class="form" role="form">
+  <dl>
+    {{ render_field(form.old_password) }}
+    {{ render_field(form.password) }}
+      {{ render_field(form.password2) }}
+    {{ render_field(form.welcomeM) }}
+
+  </dl>
+     <input class="btn btn-danger" type="submit" value="Update">
+</form>
+
+
+
+</div>
+
+
+{% endblock %}

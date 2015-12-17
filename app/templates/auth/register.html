@@ -1,0 +1,33 @@
+{% extends "plain.html" %}
+{% from "/auth/_formhelpers.html" import render_field %}
+{% block content %}
+
+
+<div class="page-header">
+    <h1>Register</h1>
+</div>
+<div class="col-md-4">
+<form method=post action="/auth/register">
+  <dl>
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    {{ render_field(form.password2) }}
+
+    {{ render_field(form.welcomeM) }}
+
+    {{ render_field(form.pin) }}
+
+
+
+  </dl>
+  <p><input class="btn btn-danger" type=submit value=Register>
+
+</form>
+</div>
+
+ <a class="btn btn-danger" href="{{ url_for('main.home') }}">Continue</a>
+
+
+
+
+{% endblock %}

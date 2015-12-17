@@ -1,0 +1,39 @@
+#topstats{
+     position: absolute;
+     width: 500px;
+     top: 100px;
+     left: 100px;
+     height: 500px;
+     border-bottom-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff
+
+}
+
+#updateprofilebox{
+     position: absolute;
+     width: 500px;
+     top: 510px;
+     left: 100px;
+     height: 500px;
+     border-bottom-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff
+
+}
+
+
+
+#trustedprofile{
+     position: absolute;
+     width: 500px;
+     top: 100px;
+     left: 650px;
+     height: 1000px;
+     border-bottom-style: solid;
+     border-width: 1px;
+     border-color: lightgrey;
+     background-color: #ffffff;
+}

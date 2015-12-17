@@ -1,0 +1,18 @@
+{% extends "plain.html" %}
+
+{% block content %}
+<div id="trydosme">
+
+
+<div align="center" id="trydosmebanner"> <img src="{{ url_for('static', filename='/images/bclogohor1.png') }}"
+                               width="135" height="40"></div>
+
+
+    <div  align="center" id="trydosmerender">Captcha<br>
+
+
+ <a class="btn btn-danger" href="{{ url_for('auth.login') }}">Continue</a></div>
+
+
+</div>
+{% endblock %}

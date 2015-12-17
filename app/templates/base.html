@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Secret BTC</title>
+
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+  </head>
+
+  <body>
+<div id = "mainlayer">
+      <div id="topbar">
+
+
+        <div id="topbarlogo"><a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='/images/bclogohor1.png') }}" width="135" height="40"></a></div>
+
+
+
+        <div id="topbarmenu1"><a href="{{ url_for('main.buysell') }}">Buy/Sell Bitcoins</a></div>
+          <div id="topbarmenu2"><a href="{{ url_for('main.buysell') }}">Dashboard</a></div>
+          <div id="topbarmenu3"><a href="{{ url_for('index') }}">Post A Trade</a></div>
+          <div id="topbarsignup"><a href="{{ url_for('main.user', username=g.user.username) }}">{{ g.user.username }}</a></div>
+          <div id="topbarregister"><a href="{{ url_for('main.logout') }}">Logout</a></div>
+
+      </div>
+
+      {% block content %}
+
+
+
+      {% endblock %}
+
+     
+
+
+
+</div>
+  </body>
+</html>

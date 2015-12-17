@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "/auth/_formhelpers.html" import render_field %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+      <br><br><br>
+    <!-- content -->
+
+
+
+    <div id="topstats">
+        Visit the security center to change your password:    <a href="{{ url_for('auth.security', username=g.user.username) }}">Account Security</a>&nbsp;&nbsp;
+        <h3>
+
+            Hello {% if current_user %}
+                   {{ user.username}}!
+                    {% endif %}
+        </h3>
+        <hr>
+
+        Account Type: <br><br>
+
+        Current Sales :  0<br><br>
+
+        Account Level: 0
+         <hr>
+    </div>
+    <div id="updateprofilebox">
+
+        <h3>Update Profile</h3>
+        <form method="post"  class="form" role="form">
+              <dl>
+                  {{ render_field(form.welcomeM) }}
+
+
+                  {{ render_field(form.about_me, placeholder=("about me"), autocomplete="off") }}
+                  {{ render_field(form.pgpkey, placeholder="Pgp", autocomplete="off") }}
+              </dl>
+           <input class="btn btn-danger" type="submit" value="update">
+        </form>
+
+
+ </div>
+
+
+<div id="trustedprofile"><h3 align="center">Trusted By</h3>
+
+    User
+</div>
+
+{% endblock %}
