@@ -1,9 +1,9 @@
 from flask import render_template, redirect, url_for, g, flash, request, session
 from flask.ext.login import logout_user, current_user, login_required, login_user
 from . import main
-from .forms import EditProfileForm
+from .forms import EditProfileForm, CreateItemForm
 from .. import db
-from ..models import User
+from ..models import User, Item
 from app import login_manager, app
 
 
@@ -50,11 +50,41 @@ def user(username):
     return render_template('/main/profile.html', user=user, form=form)
 
 
+@main.route('/posttrade', methods=['GET', 'POST'])
+@login_required
+def createitem():
+    form = CreateItemForm(request.form, obj=current_user)
+    items = Item.query.all()
+    print items
+    form.payment_method.choices=[(c, c) for c in ['Torland', 'USA', 'Europe', 'China', 'Mexico', 'other']]
+    print ("Create Item Page")
+    if request.method == 'POST':
+        items = Item(payment_method=form.payment_method.data,
+                    location=form.location.data,
+                    item_listed=form.item_listed.data,
+                    item_description=form.item_description.data,
+                    price = form.price.data,
+                    person = current_user.username,
+                    tradelimitmin=form.tradelimitmin.data,
+                    tradelimitmax=form.tradelimitmax.data
+                    )
+
+        db.session.add(items)
+        db.session.commit()
+        print ("Add Created")
+
+        return redirect(url_for('main.createitem'))
+    return render_template('main/postTrade.html', form=form, user=user)
 
 
 
 
 
+
+@main.route('/dashboard')
+def dashboard():
+    trades = Item.query.all()
+    return render_template('main/dashboard.html', user=user, trades=trades)
 
 
 

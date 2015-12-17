@@ -23,6 +23,23 @@ class EditProfileForm(Form):
     submit = SubmitField('Update')
 
 
+class CreateItemForm(Form):
+
+
+    title = StringField('Title', validators=[Length(0, 64)])
+    location = SelectField(("Select location"), choices = [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[validators.optional()])
+    item_description = TextAreaField('Description')
+    payment_method = SelectField(("Select Payment Method"), choices = [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[validators.optional()])
+    item_listed = BooleanField('Item Listed', default=False)
+    price = StringField('Price',  [validators.NumberRange(min=0, max=10)])
+    tradelimitmin = StringField('Trade Min',  [validators.NumberRange(min=0, max=10)])
+    tradelimitmax = StringField('Trade Max',  [validators.NumberRange(min=0, max=10)])
+    submit = SubmitField('Create item')
+
+    def __init__(self, csrf_enabled=False, *args, **kwargs):
+        super(CreateItemForm, self).__init__(csrf_enabled=False, *args, **kwargs)
+
+
 
 
 

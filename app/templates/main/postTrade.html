@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+ok
+
+{% from "/auth/_formhelpers.html" import render_field %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/security.css') }}">
+<div id="security">
+
+    <h1>Create A Trade</h1>
+
+
+        <form method="post"  class="form" role="form">
+  <dl>
+    {{ render_field(form.item_listed) }}
+    {{ render_field(form.item_description) }}
+      {{ render_field(form.price) }}
+    {{ render_field(form.payment_method) }}
+      {{ render_field(form.location) }}
+      {{ render_field(form.tradelimitmin) }}
+      {{ render_field(form.tradelimitmax) }}
+  </dl>
+     <input class="btn btn-danger" type="submit" value="Update">
+</form>
+
+
+
+</div>
+
+
+{% endblock %}

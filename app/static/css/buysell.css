@@ -1,0 +1,56 @@
+#searchbox{
+     position:absolute;
+     width:1000px;
+     height:200px;
+     top:100px;
+     left:100px;
+
+     background:cornflowerblue;
+     text-align: center;
+     border:1px solid grey;
+}
+#searchboxtopleft{
+     position:absolute;
+     width:499px;
+     height:99px;
+
+     left:0px;
+
+     background:cornflowerblue;
+     text-align: center;
+
+}
+#searchboxbotleft{
+     position:absolute;
+     width:499px;
+     height:99px;
+
+     margin-top:100px;
+     left:0px;
+     background:cornflowerblue;
+     text-align: center;
+
+}
+#searchboxtopright{
+     position:absolute;
+     width:499px;
+     height:99px;
+
+
+     left:500px;
+     background:cornflowerblue;
+     text-align: center;
+
+}
+#searchboxbotright{
+     position:absolute;
+     width:499px;
+     height:99px;
+
+     margin-top:100px;
+     left:500px;
+
+     background:cornflowerblue;
+     text-align: center;
+
+}

@@ -1,0 +1,26 @@
+<ul class="posts">
+<table>
+<tr>
+     <th>status</th>
+    <th>Name</th>
+
+    <th>quantity</th>
+    <th>price</th>
+
+</tr>
+    {% for trade in trades %}
+
+{% if trade.person == g.user.username %}
+<tr>                 <td  width="5%"> {{ trade.person}}</td>
+            <td  width="40%">{{ trade.payment_method}}</td>
+            <td width="20%">{{ trade.location}}</td>
+               <td  width="10%"> {{ trade.price}}</td>
+
+
+ </tr>
+   {% endif %}
+    {% endfor %}
+        </table>
+
+
+</ul>

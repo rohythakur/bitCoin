@@ -21,8 +21,6 @@ class User(UserMixin, db.Model):
 
 
 
-
-
     @property
     def password(self):
         raise AttributeError('password is not a readable attribute')
@@ -107,4 +105,17 @@ login_manager.anonymous_user = AnonymousUser
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+class Item(UserMixin, db.Model):
+    __tablename__ = 'trades'
+    id                = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    payment_method    = db.Column(db.String(64), unique=False, index=True)
+    location          = db.Column(db.String(128))
+    person            = db.Column(db.String(64))
+    item_listed       = db.Column(db.Boolean)
+    item_description  = db.Column(db.Text())
+    price             = db.Column(db.Integer)
+    tradelimitmin     = db.Column(db.Integer)
+    tradelimitmax     = db.Column(db.Integer)
+
 

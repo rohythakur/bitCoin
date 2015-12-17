@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "/auth/_formhelpers.html" import render_field %}
+
+{% block content %}
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+
+      <!-- Listings sidebar End -->
+<div id="bannerm">Welcome to Secret Bitcoin!</div>
+
+      <!-- content -->
+    <div id="itemscreator">
+        <div id="itemscreatorbuttons">
+        <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">On</a>
+
+         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Off</a>
+
+</div>
+
+<div id="itemscreatorbuttons2">
+         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Create item</a>
+         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Vacation Mode</a>
+         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Delete</a>
+</div>
+        <br><br>
+ {% include 'main/_dashboardtrades.html' %}
+</div>
+
+{% endblock %}
