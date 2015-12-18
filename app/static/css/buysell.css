@@ -1,9 +1,10 @@
 #searchbox{
      position:absolute;
-     width:1000px;
+     width:600px;
      height:200px;
      top:100px;
-     left:100px;
+
+     left:300px;
 
      background:cornflowerblue;
      text-align: center;

@@ -11,12 +11,17 @@
 
 
         <div id="searchboxtopleft">topleft</div>
-        <div id="searchboxbotleft">botleft</div>
-        <div id="searchboxtopright">topright</div>
-        <div id="searchboxbotright">bottttright</div>
+        <div id="searchboxbotleft">b</div>
+
 
 </div>
+    <br><br><br><br>
+    if
+    {% for  trade in trades %}
+{{ trade.buyorsell }}
+        {{ trade.person }}
+           {{ trade.tradelimitmax }}
+           {{ trade.tradelimitmin }}
 
-
-
+{% endfor %}
 {% endblock %}

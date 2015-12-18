@@ -27,28 +27,6 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/user/<username>', methods=['GET', 'POST'])
-def user(username):
-    form = EditProfileForm(request.form, obj=current_user)
-    user = User.query.filter_by(username=username).first()
-    print("user profile page")
-
-    if request.method == 'POST':
-        form.populate_obj(user)
-        user.welcomeMessage = form.welcomeM.data
-        user.about_me = form.about_me.data
-
-
-        print "step 3 register"
-        db.session.add(user)
-        db.session.commit()
-
-        return redirect(url_for('main.home'))
-
-
-
-    return render_template('/main/profile.html', user=user, form=form)
-
 
 @main.route('/posttrade', methods=['GET', 'POST'])
 @login_required
@@ -56,10 +34,13 @@ def createitem():
     form = CreateItemForm(request.form, obj=current_user)
     items = Item.query.all()
     print items
+    form.buyorsell.choices= [('sell', 'Sell'),('buy', 'Buy')]
+    form.location.choices= [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')]
     form.payment_method.choices=[(c, c) for c in ['Torland', 'USA', 'Europe', 'China', 'Mexico', 'other']]
     print ("Create Item Page")
     if request.method == 'POST':
         items = Item(payment_method=form.payment_method.data,
+                    buyorsell=form.buyorsell.data,
                     location=form.location.data,
                     item_listed=form.item_listed.data,
                     item_description=form.item_description.data,
@@ -83,16 +64,50 @@ def createitem():
 
 @main.route('/dashboard')
 def dashboard():
-    trades = Item.query.all()
-    return render_template('main/dashboard.html', user=user, trades=trades)
+
+
+    return render_template('main/dashboard.html')
 
 
 
 
 
-@main.route('/showtrades', methods=['GET', 'POST'])
+@main.route('/user/<username>', methods=['GET', 'POST'])
+def user(username):
+    form = EditProfileForm(request.form, obj=current_user)
+    user = User.query.filter_by(username=username).first()
+    print("user profile page")
+
+    if request.method == 'POST':
+        form.populate_obj(user)
+        user.welcomeMessage = form.welcomeM.data
+        user.about_me = form.about_me.data
+
+
+        print "step 3 register"
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('main.home'))
+
+
+
+    return render_template('/main/profile.html', user=user, form=form)
+
+
+
+@main.route('/showtrades/', methods=['GET', 'POST'])
 def buysell():
-    return render_template('main/buysell.html')
+    x='b'
+    trades = Item.query.filter(Item.buyorsell==x).all()
+
+
+
+    return render_template('main/buysell.html', user=user, trades=trades)
+
+
+
+
 
 @main.route('/home', methods=['GET', 'POST'])
 def home():

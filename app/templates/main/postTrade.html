@@ -11,6 +11,7 @@ ok
 
         <form method="post"  class="form" role="form">
   <dl>
+      {{ render_field(form.buyorsell) }}
     {{ render_field(form.item_listed) }}
     {{ render_field(form.item_description) }}
       {{ render_field(form.price) }}

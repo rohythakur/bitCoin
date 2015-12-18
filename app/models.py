@@ -109,6 +109,7 @@ def load_user(user_id):
 class Item(UserMixin, db.Model):
     __tablename__ = 'trades'
     id                = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    buyorsell         = db.Column(db.String(64))
     payment_method    = db.Column(db.String(64), unique=False, index=True)
     location          = db.Column(db.String(128))
     person            = db.Column(db.String(64))

@@ -26,10 +26,10 @@ class EditProfileForm(Form):
 class CreateItemForm(Form):
 
 
-    title = StringField('Title', validators=[Length(0, 64)])
-    location = SelectField(("Select location"), choices = [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[validators.optional()])
+    buyorsell = SelectField(("I want to Buy or Sell Bitcoins"), validators=[validators.optional()])
+    location = SelectField(("Select location"), validators=[validators.optional()])
     item_description = TextAreaField('Description')
-    payment_method = SelectField(("Select Payment Method"), choices = [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')], validators=[validators.optional()])
+    payment_method = SelectField(("Select Payment Method"), validators=[validators.optional()])
     item_listed = BooleanField('Item Listed', default=False)
     price = StringField('Price',  [validators.NumberRange(min=0, max=10)])
     tradelimitmin = StringField('Trade Min',  [validators.NumberRange(min=0, max=10)])
