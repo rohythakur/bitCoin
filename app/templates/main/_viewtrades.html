@@ -1,23 +1,20 @@
 <ul class="posts">
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <table>
 <tr>
      <th>Trader</th>
     <th>Payment Method</th>
 
-    <th>Location</th>
-    <th>Trade Min</th>
-     <th>Trade Max</th>
-
+    <th>Minimum</th>
+    <th>Maximum</th>
 
 </tr>
     {% for trade in trades %}
 
 
-<tr>                 <td  width="20%"> {{ trade.person}}</td>
+<tr>                 <td  width="5%"><a href="{{ url_for('main.viewperson', username=trade.person) }} ">{{ trade.person}}</a></td>
             <td  width="40%">{{ trade.payment_method}}</td>
-            <td width="20%">{{ trade.location}}</td>
-             <td width="10%">{{ trade.tradelimitmin}}</td>
+            <td width="20%">{{ trade.tradelimitmin}}</td>
                <td  width="10%"> {{ trade.tradelimitmax}}</td>
 
 

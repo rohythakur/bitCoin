@@ -16,12 +16,6 @@
 
 </div>
     <br><br><br><br>
-    if
-    {% for  trade in trades %}
-{{ trade.buyorsell }}
-        {{ trade.person }}
-           {{ trade.tradelimitmax }}
-           {{ trade.tradelimitmin }}
+    {% include 'main/_viewtrades.html' %}
 
-{% endfor %}
 {% endblock %}

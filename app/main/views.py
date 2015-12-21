@@ -35,8 +35,13 @@ def createitem():
     items = Item.query.all()
     print items
     form.buyorsell.choices= [('sell', 'Sell'),('buy', 'Buy')]
-    form.location.choices= [('tor', 'Torland'),('cpp', 'C++'), ('py', 'Python'), ('text', 'Plain Text')]
-    form.payment_method.choices=[(c, c) for c in ['Torland', 'USA', 'Europe', 'China', 'Mexico', 'other']]
+    form.location.choices= [('tor', 'Torland'),('NA', 'North America'), ('SA', 'South America'),
+                            ('Europe', 'Europe'), ('Asia', 'Asia'), ('AU', 'Australia'), ('Russia', 'Russia')]
+    form.payment_method.choices=[(c, c) for c in ['Cash By Mail', 'Cash Deposit',
+                                                  'Moneygram', 'Amazon Gift Card', 'WalMart Gift Card',
+                                                  'PayPal', 'PayPal Mycash', 'Vanilla',
+                                                  'Google Wallet', 'Postal Order',
+                                                  'Cashiers Check', 'Other Gift Card', 'Gold']]
     print ("Create Item Page")
     if request.method == 'POST':
         items = Item(payment_method=form.payment_method.data,
@@ -66,7 +71,8 @@ def createitem():
 def dashboard():
 
 
-    return render_template('main/dashboard.html')
+    trades = Item.query.filter(Item.person==User.username).all()
+    return render_template('main/dashboard.html', trades=trades)
 
 
 
@@ -96,14 +102,26 @@ def user(username):
 
 
 
+@main.route('/viewperson/<username>', methods=['GET', 'POST'])
+def viewperson(username):
+
+    user = User.query.filter_by(username=username).first()
+
+    return render_template('main/viewperson.html', user=user)
+
+
+
 @main.route('/showtrades/', methods=['GET', 'POST'])
 def buysell():
-    x='b'
+    x='buy'
     trades = Item.query.filter(Item.buyorsell==x).all()
 
 
 
     return render_template('main/buysell.html', user=user, trades=trades)
+
+
+
 
 
 
