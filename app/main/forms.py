@@ -22,6 +22,9 @@ class EditProfileForm(Form):
     pgpkey = TextAreaField('Pgp Key')
     submit = SubmitField('Update')
 
+class FindMoneyForm(Form):
+    buyorsell = SelectField(("Buy or Sell"), validators=[validators.required()])
+    payment_method = SelectField(("Select Payment Method"), validators=[validators.required()])
 
 class CreateItemForm(Form):
 

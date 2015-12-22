@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% from "/auth/_formhelpers.html" import render_field %}
 
 {% block content %}
 
@@ -8,11 +8,19 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/buysell.css') }}">
 
 <div id="searchbox">
+<form method="post"  class="form" role="form">
+
+        <div id="searchboxtopleft">      {{ render_field(form.buyorsell) }}
+        </div>
 
 
-        <div id="searchboxtopleft">topleft</div>
-        <div id="searchboxbotleft">b</div>
+        <div id="searchboxbotleft">{{ render_field(form.payment_method) }}
+            <input class="btn btn-danger" type="submit" value=buyorsell>
 
+        </div>
+
+
+</form>
 
 </div>
     <br><br><br><br>

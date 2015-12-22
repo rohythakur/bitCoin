@@ -10,7 +10,7 @@
 
 
     <div id="topstats">
-        Visit the security center to change your password:    <a href="{{ url_for('auth.security', username=g.user.username) }}">Account Security</a>&nbsp;&nbsp;
+
         <h3>
 
              {% if current_user %}
@@ -29,7 +29,7 @@
 
     <div id="updateprofilebox">
 
-        <h3>Update Profile</h3>
+        <h3>Active Trades By {{ user.username }}</h3>
 
  {{ user.profile}}
 

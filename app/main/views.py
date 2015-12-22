@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for, g, flash, request, session
 from flask.ext.login import logout_user, current_user, login_required, login_user
 from . import main
-from .forms import EditProfileForm, CreateItemForm
+from .forms import EditProfileForm, CreateItemForm, FindMoneyForm
 from .. import db
 from ..models import User, Item
 from app import login_manager, app
@@ -113,12 +113,21 @@ def viewperson(username):
 
 @main.route('/showtrades/', methods=['GET', 'POST'])
 def buysell():
+    form = FindMoneyForm()
+    form.buyorsell.choices= [('sell', 'Sell'),('buy', 'Buy')]
+    form.payment_method.choices=[(c, c) for c in ['Cash By Mail', 'Cash Deposit',
+                                                  'Moneygram', 'Amazon Gift Card', 'WalMart Gift Card',
+                                                  'PayPal', 'PayPal Mycash', 'Vanilla',
+                                                  'Google Wallet', 'Postal Order',
+                                                  'Cashiers Check', 'Other Gift Card', 'Gold']]
     x='buy'
     trades = Item.query.filter(Item.buyorsell==x).all()
+    if request.method == "POST":
+        print form.buyorsell.data,
+        print form.payment_method.data,
 
 
-
-    return render_template('main/buysell.html', user=user, trades=trades)
+    return render_template('main/buysell.html', user=user, trades=trades, form=form)
 
 
 
