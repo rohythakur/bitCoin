@@ -1,11 +1,8 @@
 from flask.ext.wtf import Form
 from wtforms import StringField, TextAreaField, BooleanField, SelectField,\
-    SubmitField, PasswordField, FileField, RadioField
-from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
-from wtforms import ValidationError, validators
-from ..models import User
-from flask.ext.wtf import RecaptchaField
-from flask.ext.babel import gettext
+    SubmitField, SelectMultipleField
+from wtforms.validators import DataRequired, Length
+from wtforms import ValidationError, validators, widgets
 
 
 class ProfileviewForm(Form):
@@ -28,7 +25,7 @@ class FindMoneyForm(Form):
 
 class CreateItemForm(Form):
 
-
+    selectchoice = SelectMultipleField("Pick things", option_widget=widgets.CheckboxInput(), widget=widgets.ListWidget(prefix_label=False))
     buyorsell = SelectField(("I want to Buy or Sell Bitcoins"), validators=[validators.optional()])
     location = SelectField(("Select location"), validators=[validators.optional()])
     item_description = TextAreaField('Description')

@@ -57,10 +57,6 @@ def register():
 
 
 
-
-
-
-
 @auth.route('/security/<username>', methods=['GET', 'POST'])
 def security(username):
     form = ChangePasswordForm()
@@ -79,9 +75,6 @@ def security(username):
 
             return redirect(url_for('main.home'))
     return render_template('/auth/security.html', user=user, form=form)
-
-
-
 
 
 

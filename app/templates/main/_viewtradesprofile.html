@@ -1,0 +1,28 @@
+<ul class="posts">
+
+<table>
+<tr>
+     <th>Trader</th>
+    <th>Payment Method</th>
+
+    <th>Min</th>
+    <th>Max</th>
+
+</tr>
+    {% for trade in trades %}
+
+
+<tr>
+    <td  width="5%">{{ trade.person }}</td>
+    <td  width="40%">{{ trade.payment_method }}</td>
+    <td width="20%">{{ trade.tradelimitmin }}</td>
+    <td  width="10%"> {{ trade.tradelimitmax }}</td>
+
+
+ </tr>
+
+    {% endfor %}
+        </table>
+
+
+</ul>

@@ -65,14 +65,24 @@ def createitem():
 
 
 
+@main.route('/delete/<int:id>', methods=['DELETE', 'POST'])
+def deleteid(id):
+    object = Item.query.get_or_404(id)
+    delete(object)
+    return redirect(url_for('index'))
 
 
-@main.route('/dashboard')
+
+
+@main.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
+    form = CreateItemForm()
+    form.selectchoice.choices= [('sell', 'Sell'),('buy', 'Buy')]
+    trades = Item.query.filter(Item.person==g.user.username).all()
+    if form.validate_on_submit():
+        print selectchoice
 
-
-    trades = Item.query.filter(Item.person==User.username).all()
-    return render_template('main/dashboard.html', trades=trades)
+    return render_template('main/dashboard.html', trades=trades, form=form)
 
 
 
@@ -106,8 +116,9 @@ def user(username):
 def viewperson(username):
 
     user = User.query.filter_by(username=username).first()
+    trades = Item.query.filter_by(person=user.username).all()
 
-    return render_template('main/viewperson.html', user=user)
+    return render_template('main/viewperson.html', user=user, trades=trades)
 
 
 
@@ -121,7 +132,8 @@ def buysell():
                                                   'Google Wallet', 'Postal Order',
                                                   'Cashiers Check', 'Other Gift Card', 'Gold']]
     x='buy'
-    trades = Item.query.filter(Item.buyorsell==x).all()
+    s ='sell'
+    trades = Item.query.filter(Item.buyorsell==x or Item.buyorsell==s).all()
     if request.method == "POST":
         print form.buyorsell.data,
         print form.payment_method.data,

@@ -17,11 +17,13 @@
 
 </div>
 
+<form method="post" action = ''>
 <div id="itemscreatorbuttons2">
          <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Create item</a>
          <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Vacation Mode</a>
-         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Delete</a>
+         <a class="btn btn-danger" type='submit' href=" }}">Delete</a>
 </div>
+        </form>
         <br><br>
  {% include 'main/_dashboardtrades.html' %}
 </div>

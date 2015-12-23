@@ -3,11 +3,15 @@
 
 
 {% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/buysell.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
       <br><br><br>
     <!-- content -->
 
+<div id="trustedprofile"><h3 align="center">Trusted By</h3>
 
+    Make people who follow here
+</div>
 
     <div id="topstats">
 
@@ -31,13 +35,10 @@
 
         <h3>Active Trades By {{ user.username }}</h3>
 
- {{ user.profile}}
+ {% include 'main/_viewtradesprofile.html' %}
 
  </div>
 
-<div id="trustedprofile"><h3 align="center">Trusted By</h3>
 
-    User
-</div>
 
 {% endblock %}
