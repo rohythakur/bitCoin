@@ -17,15 +17,56 @@
 
 </div>
 
-<form method="post" action = ''>
+
+
+
+
+
+
+  <form method="post"  class="form" role="form">
 <div id="itemscreatorbuttons2">
-         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Create item</a>
-         <a class="btn btn-danger" href="{{ url_for('main.createitem') }}">Vacation Mode</a>
-         <a class="btn btn-danger" type='submit' href=" }}">Delete</a>
+
+        <input class="btn btn-danger" type="submit" value="Delete">
 </div>
-        </form>
+
+
+
+
+
         <br><br>
- {% include 'main/_dashboardtrades.html' %}
+<ul class="posts">
+
+<table>
+<tr>
+    <th></th>
+     <th>Trader</th>
+    <th>Payment Method</th>
+
+    <th>Location</th>
+    <th>Trade Min</th>
+     <th>Trade Max</th>
+
+
+</tr>
+    {% for trade in trades %}
+
+
+<tr>
+            <td  width="5%"> {{ render_field(form.selectbox) }} </td>
+            <td  width="20%"> {{ trade.person}}</td>
+            <td  width="40%">{{ trade.payment_method}}</td>
+            <td width="20%">{{ trade.location}}</td>
+             <td width="10%">{{ trade.tradelimitmin}}</td>
+               <td  width="10%"> {{ trade.tradelimitmax}}</td>
+
+
+ </tr>
+
+    {% endfor %}
+        </table></ul>
+</form>
+
+
 </div>
 
 {% endblock %}

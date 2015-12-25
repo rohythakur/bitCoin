@@ -118,5 +118,6 @@ class Item(UserMixin, db.Model):
     price             = db.Column(db.Integer)
     tradelimitmin     = db.Column(db.Integer)
     tradelimitmax     = db.Column(db.Integer)
+    selectbox         = db.Column(db.Boolean)
 
 

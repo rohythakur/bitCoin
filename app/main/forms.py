@@ -25,7 +25,7 @@ class FindMoneyForm(Form):
 
 class CreateItemForm(Form):
 
-    selectchoice = SelectMultipleField("Pick things", option_widget=widgets.CheckboxInput(), widget=widgets.ListWidget(prefix_label=False))
+    selectbox = BooleanField('', default=False)
     buyorsell = SelectField(("I want to Buy or Sell Bitcoins"), validators=[validators.optional()])
     location = SelectField(("Select location"), validators=[validators.optional()])
     item_description = TextAreaField('Description')

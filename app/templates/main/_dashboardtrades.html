@@ -2,14 +2,9 @@
 {% from "/auth/_formhelpers.html" import render_field %}
 <ul class="posts">
 
-
-
-
-  {{ render_field(form.selectchoice) }}
-
-
 <table>
 <tr>
+    <th></th>
      <th>Trader</th>
     <th>Payment Method</th>
 
@@ -23,7 +18,7 @@
 
 
 <tr>
-
+            <td  width="5%"> {{ render_field(form.selectbox) }} </td>
             <td  width="20%"> {{ trade.person}}</td>
             <td  width="40%">{{ trade.payment_method}}</td>
             <td width="20%">{{ trade.location}}</td>

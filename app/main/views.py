@@ -65,22 +65,22 @@ def createitem():
 
 
 
-@main.route('/delete/<int:id>', methods=['DELETE', 'POST'])
-def deleteid(id):
-    object = Item.query.get_or_404(id)
-    delete(object)
-    return redirect(url_for('index'))
 
 
 
-
-@main.route('/dashboard', methods=['GET', 'POST'])
+@main.route('/user/dashboard', methods=['GET', 'POST', 'DELETE'])
 def dashboard():
     form = CreateItemForm()
-    form.selectchoice.choices= [('sell', 'Sell'),('buy', 'Buy')]
+    items = Item.query.all()
     trades = Item.query.filter(Item.person==g.user.username).all()
-    if form.validate_on_submit():
-        print selectchoice
+    print "hi"
+    if request.method == 'POST':
+
+            items.selectbox = form.selectbox.data
+            db.session.add(items)
+            db.session.commit()
+
+            print ("Add Created")
 
     return render_template('main/dashboard.html', trades=trades, form=form)
 
@@ -131,13 +131,104 @@ def buysell():
                                                   'PayPal', 'PayPal Mycash', 'Vanilla',
                                                   'Google Wallet', 'Postal Order',
                                                   'Cashiers Check', 'Other Gift Card', 'Gold']]
-    x='buy'
-    s ='sell'
-    trades = Item.query.filter(Item.buyorsell==x or Item.buyorsell==s).all()
-    if request.method == "POST":
-        print form.buyorsell.data,
-        print form.payment_method.data,
+    x= 'buy'
+    y = 'sell'
+    cbm = 'Cash By Mail'
+    cd =  'Cash Deposit'
+    mg = 'Moneygram'
+    agc = 'Amazon Gift Card'
+    wgc = 'WalMart Gift Card'
+    pp = 'PayPal'
+    ppcash = 'PayPal Mycash'
+    van = 'Vanilla'
+    gowall = 'Google Wallet'
+    po = 'Postal Order'
+    cc = 'Cashiers Check'
+    ogc = 'Other Gift Card'
+    gold = 'Gold'
 
+    trades = Item.query.filter(Item.buyorsell==x or Item.buyorsell==y).all()
+    if request.method == "POST":
+        if form.buyorsell.data == x and form.payment_method.data == cbm:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==cbm).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == cd:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==cd).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == mg:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==mg).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == agc:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==agc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == wgc:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==wgc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == pp:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==pp).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == ppcash:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==ppcash).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == van:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==van).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == gowall:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==gowall).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == po:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==po).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == cc:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==cc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == ogc:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==ogc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == x and form.payment_method.data == gold:
+            trades = Item.query.filter(Item.buyorsell==x, Item.payment_method==gold).all()
+            print form.payment_method.data
+
+
+        if form.buyorsell.data == y and form.payment_method.data == cbm:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==cbm).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == cd:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==cd).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == mg:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==mg).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == agc:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==agc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == wgc:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==wgc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == pp:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==pp).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == ppcash:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==ppcash).all()
+            print form.payment_method.data
+        if form.buyorsell.data ==  y and form.payment_method.data == van:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==van).all()
+            print form.payment_method.data
+        if form.buyorsell.data ==  y and form.payment_method.data == gowall:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==gowall).all()
+            print form.payment_method.data
+        if form.buyorsell.data ==  y and form.payment_method.data == po:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==po).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == cc:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==cc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == ogc:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==ogc).all()
+            print form.payment_method.data
+        if form.buyorsell.data == y and form.payment_method.data == gold:
+            trades = Item.query.filter(Item.buyorsell==y, Item.payment_method==gold).all()
+            print form.payment_method.data
 
     return render_template('main/buysell.html', user=user, trades=trades, form=form)
 
